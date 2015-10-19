@@ -33,18 +33,42 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <CalendarView
-                    android:id="@+id/calendarView"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/calenderHeight"
-                    android:focusedMonthDateColor="@color/my_icons"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:weekSeparatorLineColor="@color/my_primary"
+
+                <TextView
                     android:background="@color/my_primary"
-                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                    android:unfocusedMonthDateColor="#78909C"
+                    android:gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:textAppearance="@android:style/TextAppearance.Inverse"
+                    android:id="@+id/currentMonth_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="test"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
+
+                <com.github.sundeepk.compactcalendarview.CompactCalendarView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/compactcalendar_view"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/calenderHeight"
+                    app:compactCalendarTextSize="12sp"
+                    app:compactCalendarBackgroundColor="@color/my_primary"
+                    app:compactCalendarTextColor="@color/text"
+                    app:compactCalendarCurrentSelectedDayBackgroundColor="@color/my_primary_dark"
+                    app:compactCalendarCurrentDayBackgroundColor="@color/calendar_today"
                     />
+                <!--<CalendarView-->
+                    <!--android:id="@+id/calendarView"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="@dimen/calenderHeight"-->
+                    <!--android:focusedMonthDateColor="@color/my_icons"-->
+                    <!--android:paddingLeft="10dp"-->
+                    <!--android:paddingRight="10dp"-->
+                    <!--android:weekSeparatorLineColor="@color/my_primary"-->
+                    <!--android:background="@color/my_primary"-->
+                    <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+                    <!--android:unfocusedMonthDateColor="#78909C"-->
+                    <!--/>-->
 
 
                 <!--<com.prolificinteractive.materialcalendarview.MaterialCalendarView
