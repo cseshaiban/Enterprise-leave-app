@@ -28,8 +28,6 @@
 
 
 
-    <item name="calendar_today" type="color">#4FC3F8</item>
-
     <item name="red" type="color">#FF4444</item>
     <item name="darkblue" type="color">#0099CC</item>
     <item name="darkpurple" type="color">#9933CC</item>

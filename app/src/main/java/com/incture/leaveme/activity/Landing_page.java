@@ -23,7 +23,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
-import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.incture.leaveme.DataHandle.ServerDetails;
 import com.incture.leaveme.R;
 import com.incture.leaveme.helper.HTTPDataHandler;
@@ -31,11 +30,6 @@ import com.incture.leaveme.helper.HTTPDataHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 /**
  * Created by JANANI.N on 03-09-2015.
@@ -100,29 +94,9 @@ public class Landing_page extends AppCompatActivity {
         });*/
 
 
-        final SimpleDateFormat dateFormatForMonth = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
 
-        final CompactCalendarView calendarView = (CompactCalendarView)findViewById(R.id.compactcalendar_view);
-        final TextView titleMonth = (TextView)findViewById(R.id.currentMonth_textView);
-        String date = dateFormatForMonth.format(calendarView.getFirstDayOfCurrentMonth());
-        titleMonth.setText(date);
-
-        calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
-            @Override
-            public void onDayClick(Date dateClicked) {
-
-            }
-
-            @Override
-            public void onMonthScroll(Date firstDayOfNewMonth) {
-
-                titleMonth.setText(dateFormatForMonth.format(calendarView.getFirstDayOfCurrentMonth()));
-
-            }
-        });
-
-//        cal = (CalendarView) findViewById(R.id.calendarView);
-//        cal.setShowWeekNumber(false);
+        cal = (CalendarView) findViewById(R.id.calendarView);
+        cal.setShowWeekNumber(false);
 
 //        // Get the Drawable custom_progressbar
 //        Drawable draw=getResources().getDrawable(R.drawable.custom_progressbar);
