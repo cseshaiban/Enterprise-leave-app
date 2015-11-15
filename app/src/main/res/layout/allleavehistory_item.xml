@@ -26,7 +26,13 @@ android:layout_height="match_parent">
             android:layout_marginBottom="5dp"
             android:textSize="18dp"/>
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/LinearExpandableItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <RelativeLayout
+        android:id="@+id/RelativeleaveItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -74,11 +80,12 @@ android:layout_height="match_parent">
             android:textColor="#959595"
             android:layout_below="@+id/htype"
             />
-
     </RelativeLayout>
+        <!-- 2d -->
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
             android:layout_alignParentEnd="true">
@@ -91,7 +98,6 @@ android:layout_height="match_parent">
         android:textSize="30dp"
         android:text="2"
         android:textColor="#ff0000"
-
         android:gravity="end" />
 
         <TextView
@@ -108,5 +114,42 @@ android:layout_height="match_parent">
             android:textColor="#ff0000"
             android:gravity="end" />
         </LinearLayout>
+
     </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/expandCollapseLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:paddingRight="30dp"
+            android:layout_marginBottom="5dp"
+
+           >
+            <!--  android:visibility="gone" -->
+
+            <TextView
+                android:id="@+id/cancelRevoke"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="CANCEL"
+                android:textColor="#969696"
+                android:layout_toLeftOf="@+id/button"
+                android:gravity="center"
+                android:textStyle="bold"
+
+                />
+            <Button
+                android:onClick="applyLeave"
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="REVOKE"
+                android:textColor="#FFFFFF"
+                android:background="#8DC63F"
+                android:layout_alignParentRight="true"
+                android:textStyle="bold"
+/>
+           </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

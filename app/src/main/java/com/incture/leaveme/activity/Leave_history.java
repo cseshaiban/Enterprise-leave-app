@@ -133,7 +133,7 @@ public class Leave_history extends AppCompatActivity {
                         startActivity(i2);
                         break;
                     case R.id.drawer_item_4:
-                        Intent i3 = new Intent(Leave_history.this, Reports.class);
+                        Intent i3 = new Intent(Leave_history.this, Approvals.class);
                         startActivity(i3);
                         break;
                     case R.id.drawer_item_5:

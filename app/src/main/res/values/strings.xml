@@ -13,4 +13,5 @@
         <item>Sick</item>
         <item>Privilege</item>
     </string-array>
+    <string name="title_activity_approvals">Approvals</string>
 </resources>

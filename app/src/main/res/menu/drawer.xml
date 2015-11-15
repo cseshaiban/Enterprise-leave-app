@@ -20,6 +20,6 @@
             android:title="Notification"/>
         <item
             android:id="@+id/drawer_item_4"
-            android:title="Reports"/>
+            android:title="Approvals"/>
     </group>
 </menu>

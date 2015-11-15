@@ -36,6 +36,8 @@ public class AdapterApprovedLeaveHistory extends RecyclerView.Adapter<AdapterApp
         public final LinearLayout sep;
         public final ImageView divider;
 
+
+
         public ViewHolder(View view) {
             super(view);
             mView = view;
@@ -47,6 +49,7 @@ public class AdapterApprovedLeaveHistory extends RecyclerView.Adapter<AdapterApp
             monthtext=(TextView)view.findViewById(R.id.monthtext);
             sep = (LinearLayout)view.findViewById(R.id.separatorlayout);
             divider = (ImageView)view.findViewById(R.id.topdivider);
+
 
             Typeface typeface_regular= Typeface.createFromAsset(context.getAssets(),"Roboto-Bold.ttf");
             monthtext.setTypeface(typeface_regular);
@@ -126,6 +129,9 @@ public class AdapterApprovedLeaveHistory extends RecyclerView.Adapter<AdapterApp
 
         } catch (NullPointerException e) {
         }
+
+
+
           /*  try {
                 if (oList.getHead().equalsIgnoreCase("first")) {
                     holder.monthtext.setText(oList.getMonth());

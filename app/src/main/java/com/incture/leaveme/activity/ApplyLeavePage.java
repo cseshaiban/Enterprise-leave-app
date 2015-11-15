@@ -1,15 +1,12 @@
 package com.incture.leaveme.activity;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -17,10 +14,10 @@ import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.incture.leaveme.DataHandle.ApplyLeaveAsyncTask;
 import com.incture.leaveme.DataHandle.ServerDetails;
@@ -48,6 +45,7 @@ public class ApplyLeavePage extends AppCompatActivity {
 
     String mySwitch,days;
 
+    public String selectedFromSession="Full Day",selectedToSession="Full Day";
 
 
 
@@ -133,7 +131,7 @@ public class ApplyLeavePage extends AppCompatActivity {
             }
         });
 
-        final Switch Vacationplanner = (Switch)  findViewById(R.id.switch2);
+       /* final Switch Vacationplanner = (Switch)  findViewById(R.id.switch2);
         Vacationplanner.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
@@ -248,42 +246,97 @@ public class ApplyLeavePage extends AppCompatActivity {
             }
 
         });
-
-
-        onOffSwitch = (Switch)  findViewById(R.id.switch1);
+*/
+        onOffSwitch = (Switch)  findViewById(R.id.switchFrom);
         onOffSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
             {
-                RelativeLayout ll=(RelativeLayout)findViewById(R.id.to_details);
-                if(isChecked)
-                {
-                    ll.setVisibility(View.GONE);
-                    halfDay = true;
+                if(isChecked) {
+                    final String[] session_listStart = {"Session 1", "Session 2"};
+
+
+                    AlertDialog.Builder alt_bld = new AlertDialog.Builder(ApplyLeavePage.this);
+                    alt_bld.setCancelable(false);
+                    alt_bld.setTitle("Select a session");
+                    alt_bld.setSingleChoiceItems(session_listStart, -1, new DialogInterface
+                            .OnClickListener() {
+                        public void onClick(DialogInterface dialog, int item) {
+                            selectedFromSession = session_listStart[item].toString();
+                        }
+                    });
+
+                    alt_bld.setPositiveButton("proceed",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Toast.makeText(ApplyLeavePage.this, selectedFromSession+" selected", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                    alt_bld.setNegativeButton("cancel",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Toast.makeText(getApplicationContext(), "cancel", Toast.LENGTH_LONG).show();
+                                }
+                            });
+
+                    AlertDialog alert = alt_bld.create();
+                    alert.show();
                 }
-                else
-                {
-                    ll.setVisibility(View.VISIBLE);
-                    halfDay = false;
-                }
+
             }
 
         });
 
-     /*   b.setOnClickListener(new View.OnClickListener() {
+
+        Switch onOffSwitch1  = (Switch)  findViewById(R.id.switchEnd);
+        onOffSwitch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+
+
             @Override
-            public void onClick(View v) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
+                if(isChecked) {
+                    final String[] session_list = {"Session 1", "Session 2"};
 
 
-                Toast.makeText(getApplicationContext(), "Applied for Leave",
-                        Toast.LENGTH_LONG).show();
-                onBackPressed();
+                    AlertDialog.Builder alt_bld = new AlertDialog.Builder(ApplyLeavePage.this);
+                    alt_bld.setCancelable(false);
+                    alt_bld.setTitle("Select a session");
+                    alt_bld.setSingleChoiceItems(session_list, -1, new DialogInterface
+                            .OnClickListener() {
+                        public void onClick(DialogInterface dialog, int item) {
+                            selectedToSession = session_list[item].toString();
+                        }
+                    });
+
+                    alt_bld.setPositiveButton("proceed",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Toast.makeText(ApplyLeavePage.this, "" + selectedToSession + " selected", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                    alt_bld.setNegativeButton("cancel",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Toast.makeText(getApplicationContext(), "cancel", Toast.LENGTH_LONG).show();
+                                }
+                            });
+
+                    AlertDialog alert = alt_bld.create();
+                    alert.show();
+                }
 
             }
-        });*/
 
+        });
     }
+
 
     private void updateLabel() {
 
@@ -316,7 +369,7 @@ public class ApplyLeavePage extends AppCompatActivity {
 
     }
 
-    public void planner()
+  /*  public void planner()
     {
         LayoutInflater inflater = ApplyLeavePage.this.getLayoutInflater();
         final View myView1 = inflater.inflate(R.layout.vacation_planner_popup, null);
@@ -361,7 +414,7 @@ public class ApplyLeavePage extends AppCompatActivity {
 
 
 
-    }
+    }*/
 
 
     public void applyLeave(View view)
@@ -389,10 +442,14 @@ public class ApplyLeavePage extends AppCompatActivity {
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("from",fromDate);
+            requestObject.put("fromSession",selectedFromSession);
+
             requestObject.put("to",toDate);
+            requestObject.put("toSession",selectedToSession);
+
             requestObject.put("reason", reason.getText().toString());
             requestObject.put("type", leaveTypeString);
-            requestObject.put("halfday",halfDay.toString());
+
 
         } catch (JSONException e) {
             e.printStackTrace();

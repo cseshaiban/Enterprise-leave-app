@@ -1,35 +1,35 @@
 package com.incture.leaveme.helper;
 
+import com.incture.leaveme.DataHandle.ServerDetails;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 /**
  * Created by Mohammed on 9/30/2015.
  */
-import com.incture.leaveme.DataHandle.ServerDetails;
-
-import java.net.HttpURLConnection;
-import java.io.InputStream;
-import java.io.BufferedInputStream;
-import java.net.URL;
-import java.io.IOException;
-
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-import java.net.MalformedURLException;
 
 /**
  * Created by cfsuman on 31/05/2015.
  */
-public class HTTPDataHandler {
+public class HTTPDataHandlerForApproval {
 
     static String stream = null;
 
-    public HTTPDataHandler(){
+    public HTTPDataHandlerForApproval(){
     }
 
     public String GetHTTPData(String urlString){
         try{
             URL url = new URL(urlString);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setRequestProperty("uniqueid", ServerDetails.APPLY_LEAVE_USER1);
+            urlConnection.setRequestProperty("uniqueid", ServerDetails.UNIQUE_ID_APPROVE);
             // Check the connection status
             if(urlConnection.getResponseCode() == 200)
             {
@@ -64,4 +64,5 @@ public class HTTPDataHandler {
         return stream;
     }
 }
+
 

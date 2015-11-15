@@ -48,8 +48,11 @@ public class All extends Fragment {
         try {
             Log.d("LEAVE", "inside URI");
          //   URL uri = new URL("http://172.31.99.106:8000/leave-history");
-            URL uri = new URL("http://inctureprod.cherrywork.in:8000/leave-history");
-            // new LeaveHistoryAsyncTask(uri, ctx).execute();
+
+           //Amazon Instance
+          //  URL uri = new URL("http://inctureprod.cherrywork.in:8000/leave-history");
+
+            URL uri = new URL("http://172.16.11.84:8000/leave-history");
 
             if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.HONEYCOMB)
                 new LeaveHistoryAsyncTask(uri,ctx).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);

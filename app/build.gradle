@@ -49,4 +49,6 @@ dependencies {
     compile 'com.akexorcist:RoundCornerProgressBar:2.0.3'
     compile 'com.github.sundeepk:compact-calendar-view:1.7.8'
     compile 'com.prolificinteractive:material-calendarview:1.0.1'
+    compile 'de.hdodenhof:circleimageview:2.0.0'
+
 }

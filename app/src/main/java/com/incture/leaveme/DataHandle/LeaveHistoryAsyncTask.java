@@ -156,7 +156,9 @@ public class LeaveHistoryAsyncTask extends AsyncTask<Void,Void,String> {
 
                  JSONObject object = jarray.getJSONObject(i);
 
-                 String fromDate= object.getString("from");
+                 JSONObject from = object.getJSONObject("from");
+
+                 String fromDate= from.getString("day");
                  Log.d("DATA", "INside for loop JSONArray " + fromDate);
 
                  String type= object.getString("type");

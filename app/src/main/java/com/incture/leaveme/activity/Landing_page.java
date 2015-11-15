@@ -193,7 +193,7 @@ public class Landing_page extends AppCompatActivity {
                         startActivity(i2);
                         break;
                     case R.id.drawer_item_4:
-                        Intent i3 = new Intent(Landing_page.this, Reports.class);
+                        Intent i3 = new Intent(Landing_page.this, Approvals.class);
                         startActivity(i3);
                         break;
                     case R.id.drawer_item_5:

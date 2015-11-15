@@ -79,7 +79,8 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
     try {
         Log.d("LEAVE", "inside URi");
         //   URL uri = new URL("http://172.31.99.106:8000/leave-history");
-        URL uri = new URL("http://inctureprod.cherrywork.in:8000/leave-history");
+      //  URL uri = new URL("http://inctureprod.cherrywork.in:8000/leave-history");
+        URL uri = new URL("http://172.16.11.84:8000/leave-history");
         // new LeaveHistoryAsyncTask(uri, ctx).execute();
 
         if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.HONEYCOMB)

@@ -78,7 +78,11 @@ public class RejectedLeaveHistoryAsyncTask extends AsyncTask<Void,Void,String> {
                     String stats = object.getString("status");
                     if(stats.equalsIgnoreCase("rejected")) {
 
-                        String fromDate = object.getString("from");
+
+                        JSONObject from = object.getJSONObject("from");
+
+                        String fromDate= from.getString("day");
+
                         Log.d("DATA", "INside for loop JSONArray " + fromDate);
 
                         String type = object.getString("type");

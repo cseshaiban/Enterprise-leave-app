@@ -16,14 +16,18 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
+ * Created by Mohammed on 11/11/2015.
+ */
+
+/**
  * Created by Arjun on 13-10-2015.
  */
-public class ApplyLeaveAsyncTask extends AsyncTask<Object, Void, Object>
+public class ApplyApproveAsyncTask extends AsyncTask<Object, Void, Object>
 {
     Context context;
     URL url;
 
-    public ApplyLeaveAsyncTask(Context context, URL url)
+    public ApplyApproveAsyncTask(Context context, URL url)
     {
         this.context = context;
         this.url = url;
@@ -46,9 +50,9 @@ public class ApplyLeaveAsyncTask extends AsyncTask<Object, Void, Object>
                     "application/json");
 
 
-            httpURLConnection.setRequestProperty("uniqueid", ServerDetails.APPLY_LEAVE_USER1);
+            httpURLConnection.setRequestProperty("uniqueid", ServerDetails.UNIQUE_ID_APPROVE);
 
-            Log.d("SERVER","Unique id :"+ServerDetails.APPLY_LEAVE_USER1);
+            Log.d("SERVER", "Unique id :" + ServerDetails.UNIQUE_ID_APPROVE);
 
 
 
@@ -90,13 +94,13 @@ public class ApplyLeaveAsyncTask extends AsyncTask<Object, Void, Object>
             }
             else
             {
-               // Retrieve from database
+                // Retrieve from database
             }
 
 
             //id response successful add to table
             if(responseString!=null && responseString.length()!=0) {
-               return responseString;
+                return responseString;
             }
             else
             {
@@ -123,7 +127,7 @@ public class ApplyLeaveAsyncTask extends AsyncTask<Object, Void, Object>
                 JSONObject jsonResponse = new JSONObject(o.toString());
 //                if(jsonResponse.optString("status").equals(ServerDetails.RESPONSE_SUCCESS))
                 {
-                    Toast.makeText(context, jsonResponse.optString("data"),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, jsonResponse.optString("data"), Toast.LENGTH_SHORT).show();
                 }
 
 

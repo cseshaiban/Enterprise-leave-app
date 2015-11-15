@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +20,9 @@ import java.util.ArrayList;
 /**
  * Created by Mohammed on 10/8/2015.
  */
-public class AdapterAllLeaveHistory extends RecyclerView.Adapter<AdapterAllLeaveHistory.ViewHolder> {
+public class AdapterAllLeaveHistory extends RecyclerView.Adapter<AdapterAllLeaveHistory.ViewHolder> implements View.OnClickListener {
     static Context context;
     ArrayList<LeaveHistoryData> nList;
-    ArrayList<LeaveHistoryData> pList;
     private OnItemClickListener mOnItemClickListener;
     LayoutInflater layoutInflater;
     static int viewType=0;
@@ -33,9 +33,10 @@ public class AdapterAllLeaveHistory extends RecyclerView.Adapter<AdapterAllLeave
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         public final View mView;
-        public final TextView hdate,htype,hdesc,hnumday,monthtext,dalfa;
+        public final TextView hdate,htype,hdesc,hnumday,monthtext,dalfa,cancelRevoke;
         public final LinearLayout sep;
         public final ImageView divider;
+        public final LinearLayout linearLayout,expandCollapseLinearLayout;
 
         public ViewHolder(View view) {
             super(view);
@@ -47,8 +48,12 @@ public class AdapterAllLeaveHistory extends RecyclerView.Adapter<AdapterAllLeave
             hnumday=(TextView)view.findViewById(R.id.hdays);
             monthtext=(TextView)view.findViewById(R.id.monthtext);
             sep = (LinearLayout)view.findViewById(R.id.separatorlayout);
+            linearLayout = (LinearLayout)view.findViewById(R.id.LinearExpandableItem);
+            expandCollapseLinearLayout = (LinearLayout)view.findViewById(R.id.expandCollapseLinearLayout);
             divider = (ImageView)view.findViewById(R.id.topdivider);
             dalfa = (TextView)view.findViewById(R.id.dayDalpha);
+            cancelRevoke = (TextView)view.findViewById(R.id.cancelRevoke);
+        //    ecTv = (TextView)view.findViewById(R.id.expandCollapseTextView);
 
             Typeface typeface_regular= Typeface.createFromAsset(context.getAssets(),"Roboto-Bold.ttf");
             monthtext.setTypeface(typeface_regular);
@@ -63,6 +68,31 @@ public class AdapterAllLeaveHistory extends RecyclerView.Adapter<AdapterAllLeave
     public AdapterAllLeaveHistory(ArrayList<LeaveHistoryData> items, OnItemClickListener onItemClickListener) {
         mOnItemClickListener = onItemClickListener;
         nList = items;
+    }
+
+    private int expandedPosition = -1;
+
+    @Override
+    public void onClick(View view) {
+
+        Log.d("EXPAND","inside onClick start");
+
+        ViewHolder holder = (ViewHolder) view.getTag();
+     //   String theString = nList.get(holder.getAdapterPosition());
+
+        // Check for an expanded view, collapse if you find one
+        if (expandedPosition >= 0) {
+            int prev = expandedPosition;
+            notifyItemChanged(prev);
+
+            Log.d("EXPAND", "inside onClick expandPosition > 0");
+        }
+        // Set the current position to "expanded"
+        expandedPosition = holder.getAdapterPosition();
+        notifyItemChanged(expandedPosition);
+
+        Log.d("EXPAND", "inside onClick end");
+
     }
 
 
@@ -86,6 +116,9 @@ public class AdapterAllLeaveHistory extends RecyclerView.Adapter<AdapterAllLeave
           /*      break;
         }*/
         ViewHolder viewHolder = new ViewHolder(view);
+        viewHolder.itemView.setOnClickListener(AdapterAllLeaveHistory.this);
+        viewHolder.itemView.setTag(viewHolder);
+
         return viewHolder;
     }
 
@@ -141,33 +174,22 @@ public class AdapterAllLeaveHistory extends RecyclerView.Adapter<AdapterAllLeave
 
     } catch (NullPointerException e) {
     }
-          /*  try {
-                if (oList.getHead().equalsIgnoreCase("first")) {
-                    holder.monthtext.setText(oList.getMonth());
-                    holder.divider.setVisibility(View.GONE);
-                }
-                if(oList.getHead().equalsIgnoreCase("header")){
-                    holder.monthtext.setText(oList.getMonth());
-                }
-                if(oList.getHead().equalsIgnoreCase("Item")){
-                    holder.sep.setVisibility(View.GONE);
-                }
-               *//* } else if (nList.get(position).getMonth().equalsIgnoreCase(nList.get(position - 1).getMonth())) {
-                    holder.sep.setVisibility(View.GONE);
-                } else {
-                    holder.monthtext.setText(oList.getMonth());
-                }*//*
-            } catch (IndexOutOfBoundsException e) {
-
-            } catch (NullPointerException e) {
-            }*/
+        holder.cancelRevoke.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnItemClickListener.onItemClick(v, position);
+                holder.expandCollapseLinearLayout.setVisibility(View.GONE);
+            }
+        });
+        if (position == expandedPosition) {
+            holder.expandCollapseLinearLayout.setVisibility(View.VISIBLE);
+            Log.d("EXPAND", "inside onBindVuewHolder if(position == expandedPosition) ");
+        } else {
+            holder.expandCollapseLinearLayout.setVisibility(View.GONE);
+            Log.d("EXPAND", "inside onBindVuewHolder else of if(position == expandedPosition) ");
         }
-    //else
-   /*     {
-            oList = nList.get(position);
 
-        }*/
-  //  }
+    }
     @Override
     public int getItemCount() {
         return nList.size();
