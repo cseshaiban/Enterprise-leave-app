@@ -1,23 +1,17 @@
 package com.incture.leaveme.activity;
 
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.incture.leaveme.DataHandle.ApplyLeaveAsyncTask;
 import com.incture.leaveme.DataHandle.ServerDetails;
@@ -40,14 +34,12 @@ public class ApplyLeavePage extends AppCompatActivity {
 
 
     Calendar myCalendar,myCalendar1;
-    Switch onOffSwitch; Boolean halfDay = false;
+  //  Switch onOffSwitch; Boolean halfDay = false;
     Spinner leaveType;
 
-    String mySwitch,days;
+  //  String mySwitch,days;
 
-    public String selectedFromSession="Full Day",selectedToSession="Full Day";
-
-
+    public String selectedFromSession="",selectedToSession="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +50,7 @@ public class ApplyLeavePage extends AppCompatActivity {
         getSupportActionBar().setTitle("Apply Leave");
         b=(Button)findViewById(R.id.button);
 
-        reason = (EditText)findViewById(R.id.editText);
+    //    reason = (EditText)findViewById(R.id.editText);
         leaveType = (Spinner)findViewById(R.id.spinner1);
       /*  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setNavigationBarColor(Color.parseColor("#2979FF"));
@@ -75,11 +67,11 @@ public class ApplyLeavePage extends AppCompatActivity {
             }
         });
 
-        ImageButton fromdate=(ImageButton)findViewById(R.id.imageButton1);
-        ImageButton todate=(ImageButton)findViewById(R.id.imageButton2);
+    /*    ImageButton fromdate=(ImageButton)findViewById(R.id.imageButton1);
+        ImageButton todate=(ImageButton)findViewById(R.id.imageButton2);*/
         fromtext=(EditText)findViewById(R.id.textView2);
         totext=(EditText)findViewById(R.id.textView3);
-        todate.setOnClickListener(new View.OnClickListener() {
+        totext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 {
@@ -106,7 +98,7 @@ public class ApplyLeavePage extends AppCompatActivity {
 
             }
         });
-        fromdate.setOnClickListener(new View.OnClickListener() {
+        fromtext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myCalendar = Calendar.getInstance();
@@ -247,7 +239,7 @@ public class ApplyLeavePage extends AppCompatActivity {
 
         });
 */
-        onOffSwitch = (Switch)  findViewById(R.id.switchFrom);
+     /*   onOffSwitch = (Switch)  findViewById(R.id.switchFrom);
         onOffSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
 
@@ -290,9 +282,9 @@ public class ApplyLeavePage extends AppCompatActivity {
             }
 
         });
+*/
 
-
-        Switch onOffSwitch1  = (Switch)  findViewById(R.id.switchEnd);
+      /*  Switch onOffSwitch1  = (Switch)  findViewById(R.id.switchEnd);
         onOffSwitch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
 
@@ -334,7 +326,7 @@ public class ApplyLeavePage extends AppCompatActivity {
 
             }
 
-        });
+        });*/
     }
 
 
@@ -447,8 +439,9 @@ public class ApplyLeavePage extends AppCompatActivity {
             requestObject.put("to",toDate);
             requestObject.put("toSession",selectedToSession);
 
-            requestObject.put("reason", reason.getText().toString());
+            requestObject.put("reason", "");
             requestObject.put("type", leaveTypeString);
+        //    requestObject.put("uniqueid", ServerDetails.USER_1);
 
 
         } catch (JSONException e) {
@@ -456,7 +449,7 @@ public class ApplyLeavePage extends AppCompatActivity {
         }
 
         try {
-            URL requestUrl = new URL(ServerDetails.APPLY_LEAVE);
+            URL requestUrl = new URL(ServerDetails.SAP_APPLY_LEAVE);
             ApplyLeaveAsyncTask applyLeaveAsyncTask = new ApplyLeaveAsyncTask(this, requestUrl);
             applyLeaveAsyncTask.execute(requestObject);
 

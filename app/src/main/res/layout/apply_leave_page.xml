@@ -121,7 +121,7 @@
 
                 </RelativeLayout>
 
-                    <Switch
+            <!--        <Switch
                         android:id="@+id/switchFrom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
                         android:layout_marginLeft="10dp"
 
                     />
-
+-->
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
@@ -184,7 +184,7 @@
                     android:layout_height="0.5dp"
                     android:background="#696969"
                     android:layout_marginTop="10dp"/>-->
-
+<!--
                 <Switch
                     android:id="@+id/switchEnd"
                     android:layout_width="match_parent"
@@ -197,7 +197,7 @@
                     android:textSize="14sp"
                     android:layout_marginLeft="10dp"
 
-                    />
+                    />-->
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
@@ -224,7 +224,7 @@
                                     android:textSize="14sp" />
                 -->
 
-                <EditText
+       <!--         <EditText
                     android:id="@+id/editText"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -233,7 +233,7 @@
                     android:layout_below="@+id/textView3"
                     android:hint="Reason"
                     android:layout_margin="10dp"
-                    android:inputType="textMultiLine" />
+                    android:inputType="textMultiLine" />-->
 
             <!--    <EditText
                     android:id="@+id/editText2"

@@ -46,9 +46,9 @@ public class ApplyLeaveAsyncTask extends AsyncTask<Object, Void, Object>
                     "application/json");
 
 
-            httpURLConnection.setRequestProperty("uniqueid", ServerDetails.APPLY_LEAVE_USER1);
+            httpURLConnection.setRequestProperty("uniqueid", ServerDetails.USER_1);
 
-            Log.d("SERVER","Unique id :"+ServerDetails.APPLY_LEAVE_USER1);
+            Log.d("SERVER","Unique id :"+ServerDetails.USER_1);
 
 
 

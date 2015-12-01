@@ -121,6 +121,14 @@ public class ManagerLeaveApprovalAsyncTask extends AsyncTask<Void,Void,String> {
                     String email = phone.getString("email");
 
                     String type= object.getString("type");
+
+                    if(type.equalsIgnoreCase("SL"))
+                        type="Sick Leave";
+                    else if(type.equalsIgnoreCase("PL"))
+                        type="Privelege Leave";
+                    else
+                        type="Casual Leave";
+
                     String reason= object.getString("reason");
                     String responseId= object.getString("id");
 
@@ -150,7 +158,7 @@ public class ManagerLeaveApprovalAsyncTask extends AsyncTask<Void,Void,String> {
                         }
 
                         try {
-                            URL requestUrl = new URL(ServerDetails.APPLY_APPROVE);
+                            URL requestUrl = new URL(ServerDetails.MANAGER_URL);
                             ApplyApproveAsyncTask applyLeaveAsyncTask = new ApplyApproveAsyncTask(context, requestUrl);
                             applyLeaveAsyncTask.execute(requestObject);
 
@@ -163,6 +171,10 @@ public class ManagerLeaveApprovalAsyncTask extends AsyncTask<Void,Void,String> {
 
                     @Override
                     public void onItemClickShow(View view, int position) {
+
+                    }
+                    @Override
+                    public void onItemClickTeamCalendar(View view, int position) {
 
                     }
 
@@ -182,7 +194,7 @@ public class ManagerLeaveApprovalAsyncTask extends AsyncTask<Void,Void,String> {
                         }
 
                         try {
-                            URL requestUrl = new URL(ServerDetails.APPLY_APPROVE);
+                            URL requestUrl = new URL(ServerDetails.MANAGER_URL);
                             ApplyApproveAsyncTask applyLeaveAsyncTask = new ApplyApproveAsyncTask(context, requestUrl);
                             applyLeaveAsyncTask.execute(requestObject);
 

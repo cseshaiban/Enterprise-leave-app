@@ -1,12 +1,15 @@
 package com.incture.leaveme.adapter;
 
 import android.content.Context;
-import android.graphics.Typeface;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -14,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.incture.leaveme.R;
+import com.incture.leaveme.activity.TeamCalender;
 import com.incture.leaveme.data.ApprovalData;
 
 import java.util.ArrayList;
@@ -32,6 +36,7 @@ public class AdapterManagerApproval  extends RecyclerView.Adapter<AdapterManager
         public void onItemClick(View view, int position);
         public void onItemClickShow(View view, int position);
         public void onItemClickReject(View view, int position);
+        public void onItemClickTeamCalendar(View view, int position);
 
     }
     private int expandedPosition = -1;
@@ -58,6 +63,7 @@ public class AdapterManagerApproval  extends RecyclerView.Adapter<AdapterManager
         public final LinearLayout ll,l2;
         public final RelativeLayout r1;
         public final ImageView imageViewShow;
+        public final Button teamCal;
 
         public ViewHolder(View view) {
             super(view);
@@ -84,7 +90,7 @@ public class AdapterManagerApproval  extends RecyclerView.Adapter<AdapterManager
             approveButton=(TextView)view.findViewById(R.id.approveButton);
             rejectButton=(TextView)view.findViewById(R.id.rejectButton);
 
-
+            teamCal=(Button)view.findViewById(R.id.teamCalendar);
 
             ll=(LinearLayout)view.findViewById(R.id.expandCollapseLayout);
             l2=(LinearLayout)view.findViewById(R.id.expandCollapseLayoutHideInitial);
@@ -92,14 +98,14 @@ public class AdapterManagerApproval  extends RecyclerView.Adapter<AdapterManager
             r1=(RelativeLayout)view.findViewById(R.id.scrollUpLayout);
             imageViewShow=(ImageView)view.findViewById(R.id.scrollUpImageview);
 
-
+/*
             Typeface typeface_regular= Typeface.createFromAsset(context.getAssets(),"Roboto-Bold.ttf");
             sday.setTypeface(typeface_regular);
             eday.setTypeface(typeface_regular);
 
             Typeface typeface_regular_thin= Typeface.createFromAsset(context.getAssets(),"Roboto-Thin.ttf");
             sdate.setTypeface(typeface_regular_thin);
-            edate.setTypeface(typeface_regular_thin);
+            edate.setTypeface(typeface_regular_thin);*/
 
           /*  Typeface typeface= Typeface.createFromAsset(context.getAssets(), "Roboto-Regular.ttf");
             hdesc.setTypeface(typeface);
@@ -112,9 +118,11 @@ public class AdapterManagerApproval  extends RecyclerView.Adapter<AdapterManager
     private void deleteApproved(int position){
 
         try {
+            Log.d("DELETE", "Position " + position);
             nList.remove(position);
-            notifyItemRemoved(position);
+            notifyDataSetChanged();
             Log.d("DELETE", "deleteApproved ");
+
 
         }catch (ArrayIndexOutOfBoundsException e){
 
@@ -126,8 +134,6 @@ public class AdapterManagerApproval  extends RecyclerView.Adapter<AdapterManager
 
     }
 
-    public AdapterManagerApproval() {
-    }
 
 
     public AdapterManagerApproval(ArrayList<ApprovalData> items, OnItemClickListener onItemClickListener) {
@@ -160,7 +166,6 @@ public class AdapterManagerApproval  extends RecyclerView.Adapter<AdapterManager
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-        try {
             final ApprovalData oList;
             oList = nList.get(position);
 
@@ -176,6 +181,8 @@ public class AdapterManagerApproval  extends RecyclerView.Adapter<AdapterManager
             holder.emonth.setText(oList.getEmonth());
             holder.eyear.setText(oList.getEyear());
             holder.eday.setText(oList.getEday());
+
+        //    holder.esession.setText(""+position);
             holder.esession.setText(oList.getEsession());
 
             holder.leavetype.setText(oList.getLeavetype());
@@ -187,7 +194,30 @@ public class AdapterManagerApproval  extends RecyclerView.Adapter<AdapterManager
                 public void onClick(View v) {
                     mOnItemClickListener.onItemClick(v, position);
 
-                    Toast.makeText(context,"Position :"+oList.getSdate(),Toast.LENGTH_LONG).show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+                    builder.setTitle("Confirm");
+                    builder.setMessage("Are you sure?");
+                    builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            deleteApproved(position);
+                            Toast.makeText(context, "Leave Approved", Toast.LENGTH_LONG).show();
+
+                            dialog.dismiss();
+                        }
+                    });
+
+                    builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            dialog.dismiss();
+                        }
+                    });
+
+                    AlertDialog alert = builder.create();
+                    alert.show();
 
               /*  oList.remove(holder.getAdapterPosition());
                 recyclerview.removeViewAtIndex(holder.getAdapterPosition());
@@ -201,8 +231,40 @@ public class AdapterManagerApproval  extends RecyclerView.Adapter<AdapterManager
                 public void onClick(View v) {
                     mOnItemClickListener.onItemClickReject(v, position);
 
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+                    builder.setTitle("Reject");
+                    builder.setMessage("Are you sure?");
+                    builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            deleteApproved(position);
+                            Toast.makeText(context, "Leave Rejected", Toast.LENGTH_LONG).show();
+                            dialog.dismiss();
+                        }
+                    });
+                    builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    AlertDialog alert = builder.create();
+                    alert.show();
+
                 }
             });
+
+        holder.teamCal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnItemClickListener.onItemClickTeamCalendar(v, position);
+                Intent i = new Intent(context,TeamCalender.class);
+                context.startActivity(i);
+            }
+        });
+
 
       /*  holder.cancelRevoke.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -214,27 +276,22 @@ public class AdapterManagerApproval  extends RecyclerView.Adapter<AdapterManager
 
             if (position == expandedPosition) {
                 holder.l2.setVisibility(View.VISIBLE);
-                holder.imageViewShow.setVisibility(View.VISIBLE);
+                holder.r1.setVisibility(View.VISIBLE);
                 Log.d("EXPAND", "inside onBindVuewHolder if(position == expandedPosition) ");
             } else {
                 holder.l2.setVisibility(View.GONE);
-                holder.imageViewShow.setVisibility(View.GONE);
+                holder.r1.setVisibility(View.GONE);
                 Log.d("EXPAND", "inside onBindVuewHolder else of if(position == expandedPosition) ");
             }
 
-            holder.imageViewShow.setOnClickListener(new View.OnClickListener() {
+            holder.r1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     mOnItemClickListener.onItemClickShow(v, position);
                     holder.l2.setVisibility(View.GONE);
-                    holder.imageViewShow.setVisibility(View.GONE);
+                    holder.r1.setVisibility(View.GONE);
                 }
             });
-
-        } catch (IndexOutOfBoundsException e ){
-
-        }
-
 
     }
 

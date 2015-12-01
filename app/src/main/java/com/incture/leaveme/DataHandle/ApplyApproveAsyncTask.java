@@ -3,7 +3,6 @@ package com.incture.leaveme.DataHandle;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -126,9 +125,9 @@ public class ApplyApproveAsyncTask extends AsyncTask<Object, Void, Object>
                 Log.i("com.incture","Response recieved @onPostExecute: "+o.toString());
                 JSONObject jsonResponse = new JSONObject(o.toString());
 //                if(jsonResponse.optString("status").equals(ServerDetails.RESPONSE_SUCCESS))
-                {
+                /*{
                     Toast.makeText(context, jsonResponse.optString("data"), Toast.LENGTH_SHORT).show();
-                }
+                }*/
 
 
             } catch (JSONException e) {

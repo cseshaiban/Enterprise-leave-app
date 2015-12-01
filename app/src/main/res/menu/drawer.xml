@@ -1,25 +1,46 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- group with single selected item so only one item is highlighted in the nav menu -->
+
     <group android:checkableBehavior="single">
         <item
+            android:icon="@drawable/ic_home_black_48dp"
             android:id="@+id/drawer_item_1"
             android:title="Home"/>
-        <item
+       <!-- <item
+            android:icon="@drawable/plus"
             android:id="@+id/drawer_item_2"
-            android:title="Apply for Leave"/>
+            android:title="Apply for Leave"/>-->
         <item
+            android:icon="@drawable/calendar_black"
             android:id="@+id/drawer_item_5"
             android:title="Holiday Calendar"/>
 
         <item
+            android:icon="@drawable/ic_history_black_24dp"
             android:id="@+id/drawer_item_6"
             android:title="Leave History"/>
 
-        <item
+     <!--   <item
+            android:icon="@drawable/calendar_black"
             android:id="@+id/drawer_item_3"
-            android:title="Notification"/>
+            android:title="Notification"/>-->
         <item
+            android:icon="@drawable/ic_check_circle_black_24dp"
             android:id="@+id/drawer_item_4"
             android:title="Approvals"/>
     </group>
+
+   <!-- <group android:id="@+id/secondary_group"
+           android:menuCategory="secondary"
+           android:checkableBehavior="single"
+        >
+
+        <item
+
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_power_settings_new_black_24dp"
+            android:title="Logout"
+            android:menuCategory="secondary"
+            />
+    </group>-->
 </menu>

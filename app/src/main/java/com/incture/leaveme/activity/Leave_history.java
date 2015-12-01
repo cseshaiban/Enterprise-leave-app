@@ -124,14 +124,14 @@ public class Leave_history extends AppCompatActivity {
                         Intent i = new Intent(Leave_history.this, Landing_page.class);
                         startActivity(i);
                         return true;
-                    case R.id.drawer_item_2:
+                  /*  case R.id.drawer_item_2:
                         Intent i1 = new Intent(Leave_history.this, ApplyLeavePage.class);
                         startActivity(i1);
-                        return true;
-                    case R.id.drawer_item_3:
+                        return true;*/
+                  /*  case R.id.drawer_item_3:
                         Intent i2 = new Intent(Leave_history.this, Notifications.class);
                         startActivity(i2);
-                        break;
+                        break;*/
                     case R.id.drawer_item_4:
                         Intent i3 = new Intent(Leave_history.this, Approvals.class);
                         startActivity(i3);

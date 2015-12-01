@@ -48,10 +48,10 @@ public class HolidayCalenderAsyncTask extends AsyncTask<Void,Void,String> {
 
     @Override
     protected String doInBackground(Void... params) {
-
+        String userUniqueId=ServerDetails.UNIQUE_ID_AMAZON;
         String stream = null;
         String urlString = url.toString();
-        HTTPDataHandler hh = new HTTPDataHandler();
+        HTTPDataHandler hh = new HTTPDataHandler(userUniqueId);
         stream = hh.GetHTTPData(urlString);
         return stream;
     }

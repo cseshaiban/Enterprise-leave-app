@@ -7,9 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-
 /**
- * Created by Arjun on 12-10-2015.
+ * Created by Shaiban on 12-10-2015.
  */
 public class LeaveResponseDbOpenHelper extends SQLiteOpenHelper {
 

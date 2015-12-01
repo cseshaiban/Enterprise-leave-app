@@ -9,285 +9,329 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        card_view:cardCornerRadius="4dp"
-        android:padding="5dp"
-        android:layout_margin="5dp"
+        card_view:cardCornerRadius="5dp"
+        android:padding="1dp"
+        android:layout_margin="10dp"
         >
 
         <LinearLayout
-            android:id="@+id/expandCollapseLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/photo"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/shaiban"
-                app:civ_border_width="2dp"
-                app:civ_border_color="#FFFFFF"
-                android:padding="10dp"/>
-
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/expandCollapseLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-              >
-
-                <TextView
-                    android:id="@+id/name"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Mohammed Shaiban"
-                    android:padding="5dp"
-                    android:textSize="18dp"/>
-                <TextView
-                    android:id="@+id/email"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="md.shaiban@incture.com"
-                    android:textSize="15dp"
-                   />
-
-            </LinearLayout>
-            <RelativeLayout
-                android:id="@+id/scrollUpLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right|end|center_horizontal"
-                >
-            <ImageView
-                android:id="@+id/scrollUpImageview"
-                android:layout_gravity="right"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/collapse"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="30dp"
-                android:visibility="gone"
-
-                />
-
-            </RelativeLayout>
-        </LinearLayout>
-
-
-        <!-- Holiday Dates -->
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:orientation="horizontal"
-           android:layout_margin="5dp"
-           android:weightSum="5">
-
-           <!-- StartDate -->
-           <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-               android:layout_weight="2">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/sdate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="16"
-                    android:textSize="80dp"/>
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="5dp"
-                    android:paddingTop="15dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp"
                     >
 
-                    <TextView
-                        android:id="@+id/smonth"
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/photo"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/shaiban"
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="#FFFFFF"
+                        android:padding="10dp"/>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="20dp"
-                        android:text="NOV"/>
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:gravity="center_vertical|center"
+                        android:layout_gravity="center_vertical"
+                        >
 
-                    <TextView
-                        android:id="@+id/syear"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="15dp"
-                        android:text="2015"/>
+                        <TextView
+                            android:id="@+id/name"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Mohammed Shaiban"
+                            android:textSize="18dp"
+                            android:textColor="#212121"
+                            />
+                        <TextView
+                            android:id="@+id/email"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="md.shaiban@incture.com"
+                            android:textSize="15dp"
+                            android:textColor="#989898"
+                            android:layout_marginLeft="1dp"
 
-                    <TextView
-                        android:id="@+id/sday"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="20dp"
-                        android:text="MON"/>
+                            />
 
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:id="@+id/scrollUpLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right|end|center_horizontal"
+                        android:visibility="gone"
+
+                        >
+                        <ImageView
+                            android:id="@+id/scrollUpImageview"
+                            android:layout_gravity="right"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/collapse"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="30dp"
+
+                            />
+
+                    </RelativeLayout>
                 </LinearLayout>
 
 
+                <!-- Holiday Dates -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:weightSum="5"
+                    android:layout_marginTop="15dp"
+                    >
+
+                    <!-- StartDate -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="left"
+                        android:layout_weight="2"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_gravity="center"
+                            >
+
+                            <TextView
+                                android:id="@+id/sdate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="18"
+                                android:textSize="18dp"
+                                android:gravity="center"
+                                android:padding="2dp"
+                                />
+                                <TextView
+                                    android:id="@+id/smonth"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="15dp"
+                                    android:text="NOV"
+                                    android:padding="2dp"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/syear"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="18dp"
+                                    android:text="2015"
+                                    android:padding="2dp"
+                                    />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_gravity="center"
+                            >
+                        <TextView
+                            android:id="@+id/sday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12dp"
+                            android:text="MON"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="10dp"
+                                android:text=" | "
+                                android:gravity="center_vertical"
+                                android:layout_gravity="center"/>
+                        <TextView
+                            android:id="@+id/ssession"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12dp"
+                            android:text="SESSION 1"
+                            />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- to  -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textSize="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal|center"
+                        android:text="to"
+                        android:textColor="#959595"/>
+
+                    <!-- End Date -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="2"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_gravity="center"
+
+                            >
+
+                            <TextView
+                                android:id="@+id/edate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="16"
+                                android:textSize="18dp"
+                                android:gravity="center"
+                                android:padding="2dp"
+                                />
+                            <TextView
+                                android:id="@+id/emonth"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="15dp"
+                                android:text="NOV"
+                                android:padding="2dp"
+                                />
+                            <TextView
+                                android:id="@+id/eyear"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="18dp"
+                                android:text="2015"
+                                android:padding="2dp"
+                               />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_gravity="center"
+
+                            >
+                            <TextView
+                                android:id="@+id/eday"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12dp"
+                                android:text="MON"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="10dp"
+                                android:text=" | "
+                                android:gravity="center_vertical"
+                                android:layout_gravity="center"/>
+                            <TextView
+                                android:id="@+id/esession"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12dp"
+                                android:text="SESSION 1"
+                                />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#E0E0E0"/>
+
             </LinearLayout>
-            <TextView
-                android:id="@+id/ssession"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:background="#f6f6f6"
-                android:layout_gravity="center_horizontal"
 
-                />
-        </LinearLayout>
-
-          <!-- to  -->
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="match_parent"
-               android:layout_weight="1"
-               android:textStyle="bold"
-               android:textSize="20dp"
-               android:layout_gravity="center_horizontal"
-               android:gravity="center_horizontal|center"
-               android:text="to"/>
-
-           <!-- End Date -->
-           <LinearLayout
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="vertical"
-               android:layout_weight="2">
-
-               <LinearLayout
-                   android:layout_width="wrap_content"
-                   android:layout_height="match_parent"
-                   android:orientation="horizontal">
-
-                   <TextView
-                       android:id="@+id/edate"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="18"
-                       android:textSize="80dp"/>
-
-                   <LinearLayout
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:orientation="vertical"
-                       android:paddingTop="15dp"
-                       >
-
-                       <TextView
-                           android:id="@+id/emonth"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:textSize="20dp"
-                           android:text="NOV"/>
-
-                       <TextView
-                           android:id="@+id/eyear"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:textSize="15dp"
-                           android:text="2015"/>
-
-                       <TextView
-                           android:id="@+id/eday"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:textSize="20dp"
-                           android:text="MON"/>
-
-                   </LinearLayout>
-
-
-               </LinearLayout>
-               <TextView
-                   android:id="@+id/esession"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="SESSION 1"
-                   android:padding="5dp"
-                   android:layout_gravity="center_horizontal"
-                   android:background="#f6f6f6"
-
-                   />
-
-           </LinearLayout>
-        </LinearLayout>
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:background="#E0E0E0"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-               android:id="@+id/expandCollapseLayoutHideInitial"
+            <LinearLayout
+                android:id="@+id/expandCollapseLayoutHideInitial"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp"
-                 >
-            <TextView
-                android:id="@+id/type"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Casual Leave"
-                android:textSize="20dp"
-                android:padding="10dp"
-                android:textColor="#212121"
-                android:textStyle="bold"/>
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"
+                >
+                <TextView
+                    android:id="@+id/type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Casual Leave"
+                    android:textSize="20dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="5dp"
+                    android:textColor="#212121"
+                    />
 
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:padding="5dp"
-                android:textColor="#959595"
-                android:textSize="15dp"
-                android:text="Attending Cousins wedding this thursdays on Andamon Nicobar. Cannot miss you. Thank you. Hoping for acceptance for leave "
-                />
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="#959595"
+                    android:textSize="15dp"
+                    android:text="Attending Cousins wedding this thursdays on Andamon Nicobar. Cannot miss you. Thank you. Hoping for acceptance for leave "
+                    />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="VIEW TEAM CALENDER"
-                android:layout_marginLeft="5dp"
-                android:textColor="#484848"
+                <Button
+                    android:id="@+id/teamCalendar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/heightviewteamcalenderbutton"
+                    android:text="VIEW TEAM CALENDAR"
+                    android:layout_marginLeft="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="#595959"
+                    android:background="@drawable/viewteamcalenderbuttonbackground"
+                    android:textStyle="bold"
 
-                />
+                    />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:background="#E0E0E0"
-                android:layout_marginTop="5dp"
-            />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="15dp"
+                    />
 
             </LinearLayout>
 
@@ -296,9 +340,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical|end"
-                android:layout_marginRight="10dp"
-                android:paddingRight="5dp"
-                android:padding="10dp">
+                android:paddingRight="10dp"
+                android:padding="5dp"
+                android:weightSum="4">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
 
                 <TextView
                     android:id="@+id/rejectButton"
@@ -306,10 +355,12 @@
                     android:layout_height="wrap_content"
                     android:text="REJECT"
                     android:textStyle="bold"
-                    android:textSize="18dp"
+                    android:textSize="14dp"
                     android:textColor= "#03A9f5"
                     android:layout_margin="5dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:gravity="right"
                     />
 
 
@@ -320,10 +371,13 @@
                     android:layout_height="wrap_content"
                     android:text="APPROVE"
                     android:textStyle="bold"
-                    android:textSize="18dp"
+                    android:textSize="14dp"
                     android:layout_margin="5dp"
                     android:textColor= "#03A9f5"
                     android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+
                     />
 
             </LinearLayout>

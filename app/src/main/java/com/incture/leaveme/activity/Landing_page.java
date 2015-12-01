@@ -184,14 +184,14 @@ public class Landing_page extends AppCompatActivity {
                         Intent i = new Intent(Landing_page.this, Landing_page.class);
                         startActivity(i);
                         return true;
-                    case R.id.drawer_item_2:
+                  /*  case R.id.drawer_item_2:
                         Intent i1 = new Intent(Landing_page.this, ApplyLeavePage.class);
                         startActivity(i1);
-                        return true;
-                    case R.id.drawer_item_3:
+                        return true;*/
+                   /* case R.id.drawer_item_3:
                         Intent i2 = new Intent(Landing_page.this, Notifications.class);
                         startActivity(i2);
-                        break;
+                        break;*/
                     case R.id.drawer_item_4:
                         Intent i3 = new Intent(Landing_page.this, Approvals.class);
                         startActivity(i3);
@@ -260,10 +260,10 @@ public class Landing_page extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... urls) {
-
+            String userUniqueId=ServerDetails.USER_1;
             String stream = null;
             String urlString = urlstring;
-            HTTPDataHandler hh = new HTTPDataHandler();
+            HTTPDataHandler hh = new HTTPDataHandler(userUniqueId);
             stream = hh.GetHTTPData(urlString);
             return stream;
         }
@@ -348,8 +348,6 @@ public class Landing_page extends AppCompatActivity {
 
                 TextView textView3 = (TextView)findViewById(R.id.progresstext3);
                 textView3.setText("" + availedProgress + "/" + totalProgress);*/
-
-                //Arjuns
 
                 RoundCornerProgressBar progress1 = (RoundCornerProgressBar) findViewById(R.id.progressBar1);
                 progress1.setMax(totalInt[0]);

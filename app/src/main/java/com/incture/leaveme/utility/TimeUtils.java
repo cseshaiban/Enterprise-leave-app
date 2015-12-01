@@ -16,12 +16,35 @@ package com.incture.leaveme.utility;
 public class TimeUtils {
 
 
+    public static String getDateMonthFromDateSAP(String inputDate) {
+        if (inputDate == null || inputDate.length() < 16) {
+            return "";
+        }
+        SimpleDateFormat formatter1, formatter2;
+     //  formatter1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        formatter1 = new SimpleDateFormat("yyyy-MM-dd'+'HH:mm");
+        Date date = null;
+        try {
+            date = formatter1.parse(inputDate.substring(0, 16));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        formatter2 = new SimpleDateFormat("dd");
+        String processedDate = formatter2.format(date);
+        System.out.println("=====>getDateMonthFromDate  " + processedDate);
+        return processedDate;
+    }
+
+
+
     public static String getDateMonthFromDate(String inputDate) {
         if (inputDate == null || inputDate.length() < 24) {
             return "";
         }
         SimpleDateFormat formatter1, formatter2;
         formatter1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        //   formatter1 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
 
         Date date = null;
         try {
@@ -34,6 +57,7 @@ public class TimeUtils {
         System.out.println("=====>getDateMonthFromDate  " + processedDate);
         return processedDate;
     }
+
 
 
     public static String getTimeFromDate(String inputDate) {

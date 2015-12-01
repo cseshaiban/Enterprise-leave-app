@@ -52,13 +52,15 @@ public class All extends Fragment {
            //Amazon Instance
           //  URL uri = new URL("http://inctureprod.cherrywork.in:8000/leave-history");
 
-            URL uri = new URL("http://172.16.11.84:8000/leave-history");
+        //    Normal Local Server
+        //    URL uri = new URL("http://172.16.11.84:8000/leave-history");
+
+           URL uri = new URL("http://172.31.98.110:8000/saphistory");
 
             if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.HONEYCOMB)
                 new LeaveHistoryAsyncTask(uri,ctx).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
             else
                 new LeaveHistoryAsyncTask(uri,ctx).execute();
-
 
             Log.d("LEAVE", "inside after URi");
         }catch (MalformedURLException e) {e.printStackTrace();

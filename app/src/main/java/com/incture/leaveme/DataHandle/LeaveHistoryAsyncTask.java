@@ -48,10 +48,10 @@ public class LeaveHistoryAsyncTask extends AsyncTask<Void,Void,String> {
 
     @Override
     protected String doInBackground(Void... params) {
-
+        String userUniqueId=ServerDetails.USER_1;
         String stream = null;
         String urlString = url.toString();
-        HTTPDataHandler hh = new HTTPDataHandler();
+        HTTPDataHandler hh = new HTTPDataHandler(userUniqueId);
         stream = hh.GetHTTPData(urlString);
         return stream;
 
@@ -63,7 +63,6 @@ public class LeaveHistoryAsyncTask extends AsyncTask<Void,Void,String> {
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 //            httpURLConnection.setDoInput(true);
          //   httpURLConnection.setConnectTimeout(5000);
-
             Log.d("LEAVE", "doInBackground after conTimeouts");
 
             httpURLConnection.setRequestMethod("GET");   //change to post
@@ -122,7 +121,6 @@ public class LeaveHistoryAsyncTask extends AsyncTask<Void,Void,String> {
                     Log.i("com.incture","The response structure added to db @OpenHelper: "+responseString);
                     return responseString;
 
-
             } else {
                 //if response failed then read from database
                 LeaveResponseDbOpenHelper leaveResponseDbOpenHelper = new LeaveResponseDbOpenHelper(context);
@@ -140,8 +138,6 @@ public class LeaveHistoryAsyncTask extends AsyncTask<Void,Void,String> {
 
     @Override
     protected void onPostExecute(final String o) {
-
-
         Log.d("LEAVE","onPostExecute");
         if (o != null) {
          try {
@@ -154,29 +150,30 @@ public class LeaveHistoryAsyncTask extends AsyncTask<Void,Void,String> {
 
                  Log.d("DATA", "INside for loop JSONArray");
 
+
+
                  JSONObject object = jarray.getJSONObject(i);
+
+                 String type= object.getString("type");
+                 if(type.equalsIgnoreCase("CL"))type="Casual Leave";
+                 else if(type.equalsIgnoreCase("PL"))type="Privelege";
+                 else type="Sick Leave";
+                 String desc= object.getString("reason");
+                 String ndays= object.getString("noOfDays");
+                 String stats = object.getString("status");
+
 
                  JSONObject from = object.getJSONObject("from");
 
                  String fromDate= from.getString("day");
                  Log.d("DATA", "INside for loop JSONArray " + fromDate);
 
-                 String type= object.getString("type");
-                 Log.d("DATA","INside for loop JSONArray type "+type);
-                 if(type.equalsIgnoreCase("CL"))type="Casual Leave";
-                 else if(type.equalsIgnoreCase("PL"))type="Privelege";
-                 else type="Sick Leave";
-
-                 String desc= object.getString("reason");
-                 String ndays= object.getString("noOfDays");
-
-                 String stats = object.getString("status");
-
-                 DateFormat fDateFormat= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-
+          //       DateFormat fDateFormat= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+                 DateFormat fDateFormat= new SimpleDateFormat("yyyy-MM-dd'+'HH:mm");
                  Date fDate = fDateFormat.parse(fromDate);
 
-                 Log.d("DATA","INside for loop JSONArray fDate "+fDate);
+                 Log.d("DATA","INside for loop JSONArray FROM DATE "+fDate);
+
                  Calendar cal = Calendar.getInstance();
                  cal.setTime(fDate);
                  Log.d("DATA", "INside for loop JSONArray After Calender " + fDate);
@@ -192,11 +189,11 @@ public class LeaveHistoryAsyncTask extends AsyncTask<Void,Void,String> {
                  month = cal.getDisplayName(Calendar.MONTH,Calendar.LONG,Locale.ENGLISH).toUpperCase().toString();
                  Log.d("DATA","INside for loop JSONArray month :"+month);
 
-                 String date = TimeUtils.getDateMonthFromDate(fromDate);
+                 String date = TimeUtils.getDateMonthFromDateSAP(fromDate);
                  Log.d("date","INside for loop JSONArray Date :"+date);
 
                 /* String type= object.getString("type");
-                 Log.d("DATA","INside for loop JSONArray type "+type);
+                 Log.d("DATA","INside for loop JS+ONArray type "+type);
 
                  String desc= object.getString("reason");
                  String ndays= object.getString("noOfDays");*/
